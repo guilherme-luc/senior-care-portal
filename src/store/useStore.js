@@ -4,12 +4,43 @@ import { toast } from 'sonner';
 export const useStore = create((set) => ({
   // User Profile
   patient: {
-    name: '',
-    age: '',
-    birthdate: '',
-    cpf: '',
-    bloodType: ''
+    basicInfo: {
+      name: '',
+      age: '',
+      birthdate: '',
+      cpf: '',
+      healthPlan: '',
+      address: ''
+    },
+    emergencyContacts: [],
+    allergies: [],
+    conditions: [],
+    notes: ''
   },
+  
+  updateBasicInfo: (info) => set((state) => ({
+    patient: { ...state.patient, basicInfo: { ...state.patient.basicInfo, ...info } }
+  })),
+  
+  addEmergencyContact: (contact) => set((state) => ({
+    patient: { ...state.patient, emergencyContacts: [...state.patient.emergencyContacts, { ...contact, id: Date.now() }] }
+  })),
+  
+  removeEmergencyContact: (id) => set((state) => ({
+    patient: { ...state.patient, emergencyContacts: state.patient.emergencyContacts.filter(c => c.id !== id) }
+  })),
+  
+  addMedicalItem: (type, item) => set((state) => ({
+    patient: { ...state.patient, [type]: [...state.patient[type], { id: Date.now(), text: item }] }
+  })),
+  
+  removeMedicalItem: (type, id) => set((state) => ({
+    patient: { ...state.patient, [type]: state.patient[type].filter(i => i.id !== id) }
+  })),
+  
+  updateNotes: (notes) => set((state) => ({
+    patient: { ...state.patient, notes }
+  })),
 
   familyMembers: [],
   addFamilyMember: (member) => set((state) => ({
