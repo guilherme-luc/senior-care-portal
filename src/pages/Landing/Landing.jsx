@@ -1,9 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { HeartPulse, Clock, ShieldCheck, Activity, Users, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 import styles from './Landing.module.css';
 
 const Landing = () => {
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/app/dashboard');
+    }
+  }, [currentUser, navigate]);
   return (
     <div className={styles.landingPage}>
       <header className={styles.header}>

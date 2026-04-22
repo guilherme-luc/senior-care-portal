@@ -24,20 +24,30 @@ const withTimeout = (promise, ms = 5000) => {
 };
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [userProfile, setUserProfile] = useState(null);
+  const [currentUser, setCurrentUser] = useState(() => {
+    const demoUser = localStorage.getItem('demo_user');
+    return demoUser ? JSON.parse(demoUser) : null;
+  });
+  const [userProfile, setUserProfile] = useState(() => {
+    const demoProfile = localStorage.getItem('demo_profile');
+    return demoProfile ? JSON.parse(demoProfile) : null;
+  });
   const [loading, setLoading] = useState(true);
 
   // Utilizamos um modo demonstração caso as chaves do Firebase não tenham sido trocadas.
-  // Assim a interface pode ser testada sem quebrar.
-  const [isDemoMode, setIsDemoMode] = useState(false);
+  const [isDemoMode, setIsDemoMode] = useState(() => !!localStorage.getItem('demo_user'));
 
   function login(email, password) {
     if (auth.app.options.apiKey.includes('DummyKey')) {
+      const user = { email, uid: 'demo-user-123', displayName: 'Usuário Demo' };
+      const profile = { role: 'admin', familyId: 'FAM-DUMMY-123', name: 'Usuário Demo' };
+      
       setIsDemoMode(true);
-      setCurrentUser({ email, uid: 'demo-user-123' });
-      // Mantendo o admin para o mock funcionar completo
-      setUserProfile({ role: 'admin', familyId: 'FAM-DUMMY-123', name: 'Usuário Demo' });
+      setCurrentUser(user);
+      setUserProfile(profile);
+      
+      localStorage.setItem('demo_user', JSON.stringify(user));
+      localStorage.setItem('demo_profile', JSON.stringify(profile));
       return Promise.resolve();
     }
     return signInWithEmailAndPassword(auth, email, password);
@@ -51,8 +61,13 @@ export function AuthProvider({ children }) {
     if (auth.app.options.apiKey.includes('DummyKey')) {
       setIsDemoMode(true);
       const profile = { name, email, role, familyId: generatedFamilyId };
-      setCurrentUser({ email, uid: 'demo-user-123', displayName: name });
+      const user = { email, uid: 'demo-user-123', displayName: name };
+      
+      setCurrentUser(user);
       setUserProfile(profile);
+      
+      localStorage.setItem('demo_user', JSON.stringify(user));
+      localStorage.setItem('demo_profile', JSON.stringify(profile));
       return Promise.resolve();
     }
     
@@ -78,6 +93,8 @@ export function AuthProvider({ children }) {
     if (isDemoMode) {
       setCurrentUser(null);
       setIsDemoMode(false);
+      localStorage.removeItem('demo_user');
+      localStorage.removeItem('demo_profile');
       return Promise.resolve();
     }
     return signOut(auth);

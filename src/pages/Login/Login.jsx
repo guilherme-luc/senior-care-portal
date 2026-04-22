@@ -15,8 +15,14 @@ export default function Login() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { login, signup } = useAuth();
+  const { currentUser, login, signup } = useAuth();
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (currentUser) {
+      navigate('/app/dashboard');
+    }
+  }, [currentUser, navigate]);
 
   async function handleSubmit(e) {
     e.preventDefault();
