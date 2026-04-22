@@ -116,3 +116,16 @@ ul {
   font-size: 0.75rem;
   margin-top: 2px;
 }
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

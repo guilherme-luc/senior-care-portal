@@ -225,7 +225,7 @@ const PatientProfile = () => {
             <label className="formLabel">Nome Completo</label>
             <input type="text" className="formInput" required value={basicFormData.name} onChange={e => setBasicFormData({...basicFormData, name: e.target.value})} />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+          <div className="formRow">
             <div className="formGroup">
               <label className="formLabel">Idade</label>
               <input type="text" className="formInput" value={basicFormData.age} onChange={e => setBasicFormData({...basicFormData, age: e.target.value})} />

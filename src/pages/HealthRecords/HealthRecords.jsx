@@ -234,7 +234,7 @@ const HealthRecords = () => {
           </div>
           
           {selectedType === 'bp' && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div className="formRow">
               <div className="formGroup">
                 <label className="formLabel">Sistólica (Alta)</label>
                 <input type="number" className="formInput" placeholder="Ex: 120" {...register('sistolica')} />
