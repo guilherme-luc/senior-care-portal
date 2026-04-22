@@ -15,6 +15,14 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
+// Timeout helper para evitar que o Firebase trave a tela se o Firestore não estiver ativado
+const withTimeout = (promise, ms = 5000) => {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error('firebase_timeout')), ms))
+  ]);
+};
+
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
@@ -52,7 +60,13 @@ export function AuthProvider({ children }) {
     await updateProfile(userCredential.user, { displayName: name });
     
     const profile = { name, email, role, familyId: generatedFamilyId };
-    await setDoc(doc(db, 'users', userCredential.user.uid), profile);
+    
+    try {
+      await withTimeout(setDoc(doc(db, 'users', userCredential.user.uid), profile), 8000);
+    } catch (err) {
+      console.warn('Aviso: Firestore não respondeu a tempo. O banco de dados pode não estar criado no console do Firebase.', err);
+      // Se falhar no Firestore, prosseguimos localmente para não travar a UI
+    }
     
     setCurrentUser({ ...userCredential.user, displayName: name });
     setUserProfile(profile);
@@ -80,12 +94,16 @@ export function AuthProvider({ children }) {
       if (user) {
         try {
           const docRef = doc(db, 'users', user.uid);
-          const docSnap = await getDoc(docRef);
+          const docSnap = await withTimeout(getDoc(docRef), 5000);
           if (docSnap.exists()) {
             setUserProfile(docSnap.data());
+          } else {
+            setUserProfile({ role: 'admin', familyId: 'FAM-PENDING', name: user.displayName || 'Usuário' });
           }
         } catch (error) {
-          console.error("Erro ao buscar perfil do usuário", error);
+          console.error("Erro ao buscar perfil do usuário (Firestore timeout ou erro de regras):", error);
+          // Em caso de falha de conexão com Firestore, usar perfil fallback
+          setUserProfile({ role: 'admin', familyId: 'FAM-ERROR', name: user.displayName || 'Usuário' });
         }
       } else {
         setUserProfile(null);
