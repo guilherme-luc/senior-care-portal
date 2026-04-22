@@ -1,6 +1,6 @@
 .layout {
   display: flex;
-  height: 100vh;
+  height: 100dvh;
   background-color: var(--bg-color);
   overflow: hidden;
 }
@@ -213,12 +213,51 @@
 @media (max-width: 1024px) {
   .sidebar {
     position: fixed;
-    z-index: 50;
+    z-index: 100;
+    height: 100dvh;
     transform: translateX(-100%);
-    transition: transform 0.3s;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  .sidebar.open {
+  .sidebarOpen {
     transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .menuToggleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .closeMenuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 90;
+  }
+
+  .topbar {
+    padding: 0 var(--spacing-md);
+  }
+
+  .content {
+    padding: var(--spacing-md);
+  }
+
+  .topbarActions {
+    gap: var(--spacing-sm);
+  }
+
+  .userInfo {
+    display: none;
   }
 }
