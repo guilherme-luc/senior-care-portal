@@ -1,0 +1,197 @@
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.pageHeader h1 {
+  font-size: 1.75rem;
+  color: var(--text-main);
+  margin-bottom: var(--spacing-xs);
+}
+
+.pageHeader p {
+  color: var(--text-muted);
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.card {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-sm);
+}
+
+.icon {
+  color: var(--primary);
+}
+
+/* Basic Info */
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.avatarLarge {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.profileNames {
+  flex: 1;
+}
+
+.profileNames h3 {
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+
+.profileNames p {
+  color: var(--text-muted);
+}
+
+.editBtn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.editBtn:hover {
+  background-color: var(--bg-color);
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoItem span {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.infoItem strong {
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+/* Contacts */
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.contactItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-color);
+}
+
+.contactInfo strong {
+  display: block;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.contactInfo p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.callBtn {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.callBtn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Medical */
+.medicalSection {
+  margin-bottom: var(--spacing-lg);
+}
+
+.medicalSection h3 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-sm);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.tagDanger {
+  background-color: var(--danger-light);
+  color: var(--danger);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.tagWarning {
+  background-color: #FEF3C7;
+  color: #B45309;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.notesText {
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+}

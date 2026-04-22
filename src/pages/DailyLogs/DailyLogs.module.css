@@ -1,0 +1,122 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageHeader h1 {
+  font-size: 1.75rem;
+  color: var(--text-main);
+  margin-bottom: var(--spacing-xs);
+}
+
+.pageHeader p {
+  color: var(--text-muted);
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.addBtn:hover {
+  background-color: var(--primary-dark);
+}
+
+.logsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 800px;
+}
+
+.logCard {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+}
+
+.logHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.authorInfo strong {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-main);
+}
+
+.roleAdmin, .roleCaregiver {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.roleAdmin {
+  color: #1D4ED8;
+}
+
+.roleCaregiver {
+  color: var(--text-muted);
+}
+
+.timeInfo {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.logBody p {
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.emptyState {
+  text-align: center;
+  padding: var(--spacing-2xl) 0;
+  color: var(--text-muted);
+}
+
+.emptyIcon {
+  color: var(--border-color);
+  margin-bottom: var(--spacing-sm);
+}
