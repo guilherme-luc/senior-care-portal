@@ -194,4 +194,45 @@
   .contentGrid {
     grid-template-columns: 1fr;
   }
+
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .profileHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-md);
+  }
+  
+  .infoItem {
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .infoItem strong {
+    text-align: left !important;
+    max-width: 100% !important;
+  }
+
+  .contactItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .contactItem > div:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .contactItem > div:last-child a, .contactItem > div:last-child button {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
 }

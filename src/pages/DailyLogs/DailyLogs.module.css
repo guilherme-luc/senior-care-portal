@@ -120,3 +120,22 @@
   color: var(--border-color);
   margin-bottom: var(--spacing-sm);
 }
+
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .addBtn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .logHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+}
