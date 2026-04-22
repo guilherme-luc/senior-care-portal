@@ -41,23 +41,23 @@ const DashboardLayout = () => {
         <nav className={styles.sidebarNav}>
           <div className={styles.navGroup}>
             <p className={styles.navTitle}>Menu Principal</p>
-            <NavLink to="/app/dashboard" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem}>
+            <NavLink to="/app/dashboard" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem} onClick={() => setSidebarOpen(false)}>
               <LayoutDashboard size={20} /> Dashboard
             </NavLink>
-            <NavLink to="/app/profile" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem}>
+            <NavLink to="/app/profile" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem} onClick={() => setSidebarOpen(false)}>
               <UserCircle size={20} /> Perfil do Idoso
             </NavLink>
           </div>
           
           <div className={styles.navGroup}>
             <p className={styles.navTitle}>Cuidados</p>
-            <NavLink to="/app/medications" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem}>
+            <NavLink to="/app/medications" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem} onClick={() => setSidebarOpen(false)}>
               <Pill size={20} /> Remédios
             </NavLink>
-            <NavLink to="/app/appointments" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem}>
+            <NavLink to="/app/appointments" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem} onClick={() => setSidebarOpen(false)}>
               <Calendar size={20} /> Consultas
             </NavLink>
-            <NavLink to="/app/checklist" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem}>
+            <NavLink to="/app/checklist" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem} onClick={() => setSidebarOpen(false)}>
               <CheckSquare size={20} /> Checklist Diário
             </NavLink>
             <NavLink to="/app/logs" className={({isActive}) => isActive ? `${styles.navItem} ${styles.active}` : styles.navItem} onClick={() => setSidebarOpen(false)}>
